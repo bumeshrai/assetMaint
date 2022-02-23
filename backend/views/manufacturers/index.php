@@ -1,0 +1,39 @@
+<?php
+
+use yii\helpers\Html;
+use yii\grid\GridView;
+
+/* @var $this yii\web\View */
+/* @var $searchModel common\models\ManufacturerSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Manufacturers';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="manufacturer-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <p>
+        <?= Html::a('Create Manufacturer', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            [
+                'attribute' => 'equipment_name',
+                'value' => 'equipment_name.ename_name'
+            ],
+            'name',
+            'country',
+            'contact_person',
+            'contact_phone',
+            'contact_email:email',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+</div>
